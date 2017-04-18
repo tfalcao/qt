@@ -1,0 +1,2 @@
+# qt
+Qt playground + OpenCV
