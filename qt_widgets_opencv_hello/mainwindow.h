@@ -25,7 +25,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QImage MainWindow::ConvertOpenCVMatToQtQImage(cv::Mat mat);           // function prototype
+    QImage ConvertOpenCVMatToQtQImage(cv::Mat mat);
 };
 
 #endif // MAINWINDOW_H

@@ -5,7 +5,10 @@
 #include<opencv2/imgproc/imgproc.hpp>
 
 #include<iostream>
-#include<conio.h>           // may have to modify this line if not using Windows
+#ifdef _WIN32
+#include<conio.h>
+#endif
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
@@ -14,7 +17,6 @@ int main() {
 
     if (imgOriginal.empty()) {
         std::cout << "error: image not read from file\n\n";
-        _getch();
         return(0);
     }
 
@@ -31,10 +33,9 @@ int main() {
 
     // canny
     cv::Mat imgCanny;
-    cv::Canny(imgBlurred,           // input image
-              imgCanny,                   // output image
-              100,                        // low threshold
-              200);                       // high threshold
+    double lowThreshold = 100.0;
+    double highThreshold = 200.0;
+    cv::Canny(imgBlurred, imgCanny, lowThreshold, highThreshold);
 
     cv::namedWindow("imgOriginal", CV_WINDOW_AUTOSIZE);     // note: you can use CV_WINDOW_NORMAL which allows resizing the window
     cv::namedWindow("imgCanny", CV_WINDOW_AUTOSIZE);        // or CV_WINDOW_AUTOSIZE for a fixed size window matching the resolution of the image
@@ -42,7 +43,7 @@ int main() {
     cv::imshow("imgOriginal", imgOriginal);     // show windows
     cv::imshow("imgCanny", imgCanny);
 
-    cv::waitKey(0);                 // hold windows open until user presses a key
+    cv::waitKey(0);
 
     return(0);
 }
