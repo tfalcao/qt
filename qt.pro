@@ -1,0 +1,2 @@
+TEMPLATE = subdirs
+SUBDIRS = cpp_console_opencv_hello qt_widgets_opencv_camera qt_widgets_opencv_hello
